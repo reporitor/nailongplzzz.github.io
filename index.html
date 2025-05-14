@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nailoong's Birthday Collection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Comic+Neue:wght@700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Baloo 2', cursive;
+            background-color: #fff9f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ff8a65;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 0 rgba(255,138,101,0.2);
+        }
+
+        /* Nailoong Character Section */
+        .nailoong-character {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            background: linear-gradient(135deg, #ffecb3 0%, #ffccbc 100%);
+        }
+
+        .nailoong-img {
+            width: 300px;
+            height: 300px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="80" r="60" fill="%23FFEB3B" stroke="%23FFC107" stroke-width="4"/><circle cx="80" cy="70" r="10" fill="%23633"/><circle cx="120" cy="70" r="10" fill="%23633"/><path d="M90,100 Q100,115 110,100" stroke="%23633" fill="none" stroke-width="3"/><path d="M60,50 Q70,70 100,70 Q130,70 140,50" stroke="%23FF9800" fill="none" stroke-width="4" stroke-linecap="round"/><path d="M50,120 L50,170 L30,190" stroke="%23FF9800" fill="none" stroke-width="5" stroke-linecap="round"/><path d="M150,120 L150,170 L170,190" stroke="%23FF9800" fill="none" stroke-width="5" stroke-linecap="round"/><path d="M70,110 L30,80 M130,110 L170,80" stroke="%23FF9800" fill="none" stroke-width="4" stroke-linecap="round"/><path d="M80,30 L90,10 L110,10 L120,30" fill="%23FF5252"/><rect x="85" y="15" width="30" height="5" rx="2" fill="%23FFEB3B"/><rect x="70" y="130" width="20" height="30" rx="10" fill="%23FFEB3B" stroke="%23FFC107" stroke-width="3"/><circle cx="75" cy="145" r="5" fill="%23FF5252"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Photo Wall Section */
+        .photo-wall {
+            background-color: #f8bbd0;
+            padding: 30px;
+            position: relative;
+        }
+
+        .wall-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotate));
+            position: relative;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 150px;
+        }
+
+        .photo::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            width: 20px;
+            height: 10px;
+            background-color: #bdbdbd;
+            transform: translateX(-50%);
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+        }
+
+        .tape {
+            position: absolute;
+            width: 40px;
+            height: 15px;
+            background-color: rgba(255,255,255,0.5);
+            transform: rotate(-20deg);
+            z-index: 3;
+        }
+
+        .doodle {
+            position: absolute;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        /* Cake Section */
+        .cake-section {
+            background: linear-gradient(135deg, #fff9c4 0%, #b3e5fc 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .cake-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin-top: 20px;
+        }
+
+        .cake-img {
+            width: 200px;
+            height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect x="30" y="100" width="140" height="60" rx="10" fill="%23FFEB3B" stroke="%23FFC107" stroke-width="4"/><rect x="40" y="80" width="120" height="20" rx="10" fill="%23FFA000" stroke="%23FF8F00" stroke-width="3"/><rect x="50" y="60" width="100" height="20" rx="10" fill="%23FF5252" stroke="%23FF1744" stroke-width="3"/><path d="M100,30 L100,60" stroke="%23633" stroke-width="3"/><text x="100" y="50" font-family="Arial" font-size="20" text-anchor="middle" fill="%23633">1</text><circle cx="70" cy="90" r="8" fill="%23FFEB3B"/><circle cx="130" cy="90" r="8" fill="%23FFEB3B"/><path d="M80,70 Q90,75 100,70 Q110,75 120,70" stroke="%23FF1744" fill="none" stroke-width="2"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            z-index: 2;
+        }
+
+        .nailoong-on-cake {
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="40" r="30" fill="%23FFEB3B" stroke="%23FFC107" stroke-width="2"/><circle cx="40" cy="35" r="5" fill="%23633"/><circle cx="60" cy="35" r="5" fill="%23633"/><path d="M45,50 Q50,55 55,50" stroke="%23633" fill="none" stroke-width="2"/><path d="M30,30 Q35,40 50,40 Q65,40 70,30" stroke="%23FF9800" fill="none" stroke-width="2" stroke-linecap="round"/><path d="M40,20 L45,10 L55,10 L60,20" fill="%23FF5252"/><rect x="47" y="12" width="6" height="3" rx="1" fill="%23FFEB3B"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(1px);
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            50% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(3deg);
+            }
+            75% {
+                transform: rotate(-3deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nailoong Character Section -->
+    <div class="section nailoong-character">
+        <h2 class="section-title">💛 Nailoong the Dino 💛</h2>
+        <div class="nailoong-img"></div>
+    </div>
+
+    <!-- Photo Wall Section -->
+    <div class="section photo-wall">
+        <div class="wall-background"></div>
+        <h2 class="section-title">📸 Nailoong's Photo Wall 📸</h2>
+        <div class="photos-grid">
+            <!-- Photos will be added by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Cake Section -->
+    <div class="section cake-section">
+        <h2 class="section-title">🎂 Birthday Cake Time! 🎂</h2>
+        <div class="cake-container">
+            <div class="cake-img"></div>
+            <div class="nailoong-on-cake"></div>
+            <div class="sparkles" id="sparkles"></div>
+        </div>
+    </div>
+
+    <script>
+        // Create photo wall
+        const photosGrid = document.querySelector('.photos-grid');
+        const poses = ['smiling', 'waving', 'sleeping', 'surprised', 'playing', 'dancing'];
+        
+        poses.forEach((pose, index) => {
+            const photo = document.createElement('div');
+            photo.className = 'photo';
+            photo.style.setProperty('--rotate', `${Math.random() * 10 - 5}deg`);
+            photo.style.backgroundImage = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="10" fill="%23fff"/><circle cx="50" cy="40" r="20" fill="%23FFEB3B" stroke="%23FFC107" stroke-width="2"/>${getPoseSVG(pose)}<text x="50" y="90" font-family="Arial" font-size="10" text-anchor="middle" fill="%23666">${pose}</text></svg>')`;
+            
+            const tape = document.createElement('div');
+            tape.className = 'tape';
+            tape.style.top = `${Math.random() * 10 + 5}px`;
+            tape.style.left = `${Math.random() * 60 + 20}px`;
+            
+            photo.appendChild(tape);
+            photosGrid.appendChild(photo);
+        });
+
+        // Add doodles to photo wall
+        const doodles = ['🌟', '✨', '💛', '🦕', '🎈', '🎉', '📷'];
+        for (let i = 0; i < 10; i++) {
+            const doodle = document.createElement('div');
+            doodle.className = 'doodle';
+            doodle.textContent = doodles[Math.floor(Math.random() * doodles.length)];
+            doodle.style.left = `${Math.random() * 90 + 5}%`;
+            doodle.style.top = `${Math.random() * 90 + 5}%`;
+            doodle.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+            doodle.style.opacity = '0.7';
+            doodle.style.fontSize = `${Math.random() * 20 + 15}px`;
+            document.querySelector('.photo-wall').appendChild(doodle);
+        }
+
+        // Create sparkles on cake
+        const sparklesContainer = document.getElementById('sparkles');
+        for (let i = 0; i < 15; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.top = `${Math.random() * 100}%`;
+            sparkle.style.animationDelay = `${Math.random() * 2}s`;
+            sparklesContainer.appendChild(sparkle);
+        }
+
+        // Helper function to generate pose SVG
+        function getPoseSVG(pose) {
+            switch(pose) {
+                case 'smiling':
+                    return '<circle cx="40" cy="35" r="3" fill="%23633"/><circle cx="60" cy="35" r="3" fill="%23633"/><path d="M40,50 Q50,55 60,50" stroke="%23633" fill="none" stroke-width="2"/>';
+                case 'waving':
+                    return '<circle cx="40" cy="35" r="3" fill="%23633"/><circle cx="60" cy="35" r="3" fill="%23633"/><path d="M40,50 Q50,53 60,50" stroke="%23633" fill="none" stroke-width="2"/><path d="M70,30 L80,20" stroke="%23FF9800" stroke-width="3" stroke-linecap="round"/>';
+                case 'sleeping':
+                    return '<path d="M40,35 L45,40 M60,35 L55,40" stroke="%23633" stroke-width="2"/><path d="M40,50 Q50,45 60,50" stroke="%23633" fill="none" stroke-width="2"/>';
+                case 'surprised':
+                    return '<circle cx="40" cy="35" r="3" fill="%23633"/><circle cx="60" cy="35" r="3" fill="%23633"/><circle cx="50" cy="50" r="8" fill="none" stroke="%23633" stroke-width="2"/>';
+                case 'playing':
+                    return '<circle cx="40" cy="35" r="3" fill="%23633"/><circle cx="60" cy="35" r="3" fill="%23633"/><path d="M40,50 Q50,60 60,50" stroke="%23633" fill="none" stroke-width="2"/><circle cx="50" cy="70" r="5" fill="%23FF5252"/>';
+                case 'dancing':
+                    return '<circle cx="40" cy="35" r="3" fill="%23633"/><circle cx="60" cy="35" r="3" fill="%23633"/><path d="M40,50 Q50,60 60,50" stroke="%23633" fill="none" stroke-width="2"/><path d="M30,70 L40,60 M70,70 L60,60" stroke="%23FF9800" stroke-width="3" stroke-linecap="round"/>';
+                default:
+                    return '';
+            }
+        }
+    </script>
+</body>
+</html>
